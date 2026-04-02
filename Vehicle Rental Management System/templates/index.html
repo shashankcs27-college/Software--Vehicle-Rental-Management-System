@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRMS - Vehicle Rental Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">🚗 VRMS</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('vehicles') }}">Vehicles</a>
+            <a href="{{ url_for('login') }}">Book Now</a>
+        </div>
+
+        <div class="auth-buttons">
+            <div id="logged-out-header">
+                 <a href="{{ url_for('login') }}" class="btn">Login</a>
+                <a href="{{ url_for('register') }}" class="btn">Register</a>
+            </div>
+            
+            <div id="logged-in-header" style="display:none;">
+                <span id="welcome-text"></span>
+                <a href="{{ url_for('logout') }}" class="btn" style="background: #ff4d4d; color: white;">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="overlay"></div>
+
+    <div class="container hero-content">
+        <p class="subtitle">PREMIUM CAR RENTALS</p>
+
+        <h1>Drive Your <span>Dream</span></h1>
+
+        <p class="description">
+            Experience luxury on the road. Choose from our curated fleet of premium vehicles.
+        </p>
+
+        <div class="buttons">
+            <a href="{{ url_for('vehicles') }}" class="btn primary-btn">Browse Fleet →</a>
+            <a href="{{ url_for('login') }}" class="btn secondary-btn">Book Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container features-container">
+        <div class="feature-card">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Fully Insured</h3>
+            <p>All vehicles come with comprehensive insurance coverage.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon"><i class="fas fa-clock"></i></div>
+            <h3>24/7 Support</h3>
+            <p>Round-the-clock customer support for any situation.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon"><i class="fas fa-star"></i></div>
+            <h3>Premium Fleet</h3>
+            <p>Hand-picked luxury and performance vehicles.</p>
+        </div>
+    </div>
+</section>
+
+<section class="featured">
+    <div class="container">
+
+        <div class="section-header">
+            <p class="section-subtitle">OUR COLLECTION</p>
+            <h2 class="section-title">Featured Vehicles</h2>
+        </div>
+
+        <div class="vehicle-grid">
+
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                   <img src="{{ url_for('static', filename='cars/Amaze.webp') }}" alt="Honda Amaze">
+                    <span class="badge">Available</span>
+                </div>
+                <div class="vehicle-content">
+                    <p class="category">SEDAN</p>
+                    <h3>Honda Amaze</h3>
+                    <p class="vehicle-desc">Reliable sedan with great mileage and comfort.</p>
+                    <div class="vehicle-footer">
+                        <p class="price">₹1,800 <span>/ day</span></p>
+                        <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                    <img src="{{ url_for('static', filename='cars/OIP (1).webp') }}" alt="Hyundai i20">
+                    <span class="badge">Available</span>
+                </div>
+                <div class="vehicle-content">
+                    <p class="category">HATCHBACK</p>
+                    <h3>Hyundai i20</h3>
+                    <p class="vehicle-desc">Stylish premium hatchback with modern features.</p>
+                    <div class="vehicle-footer">
+                        <p class="price">₹2,000 <span>/ day</span></p>
+                        <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                    <img src="{{ url_for('static', filename='cars/download.webp') }}" alt="Grand Vitara">
+                    <span class="badge">Available</span>
+                </div>
+                <div class="vehicle-content">
+                    <p class="category">SUV</p>
+                    <h3>Grand Vitara</h3>
+                    <p class="vehicle-desc">Spacious SUV offering performance and comfort.</p>
+                    <div class="vehicle-footer">
+                        <p class="price">₹2,500 <span>/ day</span></p>
+                        <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                    <img src="{{ url_for('static', filename='cars/nano.webp') }}" alt="Tata Nano">
+                    <span class="badge">Available</span>
+                </div>
+                <div class="vehicle-content">
+                    <p class="category">CITY CAR</p>
+                    <h3>Tata Nano</h3>
+                    <p class="vehicle-desc">Compact and affordable city ride.</p>
+                    <div class="vehicle-footer">
+                        <p class="price">₹1,200 <span>/ day</span></p>
+                        <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-col">
+            <h3 class="footer-logo">🚗 VRMS</h3>
+            <p class="footer-text">Premium car rentals for those who appreciate the finer things in life.</p>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">CONTACT</h4>
+            <p class="footer-info"><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p class="footer-info"><i class="fas fa-envelope"></i> info@vrms.com</p>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 VRMS. All rights reserved.</div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script> 
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+<script src="{{ url_for('static', filename='js/auth-check.js') }}"></script>
+</body>
+</html>

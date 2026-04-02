@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VRMS - Vehicles</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body{ background:#0b0f19; color:white; }
+
+    /* ================= NAVBAR ================= */
+    header{
+        display:flex; justify-content:space-between; align-items:center;
+        padding:30px 80px; background:rgba(0,0,0,0.9);
+        position:fixed; width:100%; top:0; z-index:1000;
+    }
+    .logo{ font-size:24px; font-weight:700; }
+    nav a{ text-decoration:none; color:#ccc; margin:0 20px; font-size:18px; transition:0.3s; }
+    nav a:hover, nav a.active{ color:#f4b400; }
+
+    /* ================= PAGE HEADER ================= */
+    .page-header{ text-align:center; padding-top:160px; margin-bottom:60px; }
+    .page-header h1{ font-size:60px; font-weight:800; }
+    .page-header p{ color:#9ca3af; margin-top:10px; }
+
+    /* ================= VEHICLE GRID ================= */
+    .vehicle-grid{
+        display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+        gap:30px; padding:0 80px 80px 80px;
+    }
+    .vehicle-card{
+        background:#111827; border-radius:16px; overflow:hidden;
+        border:1px solid rgba(255,255,255,0.08); transition:0.3s;
+    }
+    .vehicle-card:hover{ transform:translateY(-8px); }
+    .vehicle-image{ position:relative; }
+    .vehicle-image img{ width:100%; height:220px; object-fit:cover; }
+    
+    .badge{
+        position:absolute; top:15px; left:15px; background:#22c55e;
+        padding:5px 12px; font-size:12px; border-radius:20px;
+    }
+
+    .vehicle-content{ padding:25px; }
+    .category{ font-size:13px; color:#f4b400; margin-bottom:5px; }
+    .vehicle-content h3{ margin-bottom:8px; font-size:20px; }
+    .vehicle-desc{ color:#9ca3af; font-size:14px; margin-bottom:15px; }
+    .price{ font-size:18px; font-weight:600; }
+    .price span{ font-size:14px; color:#9ca3af; }
+
+    .rent-btn{
+        display:inline-block; margin-top:15px; padding:10px 20px;
+        background:#f4b400; color:black; text-decoration:none;
+        border-radius:8px; font-weight:600; transition:0.3s;
+    }
+    .rent-btn:hover{ background:#e0a800; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🚗 VRMS</div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('vehicles') }}" class="active">Vehicles</a>
+        <a href="{{ url_for('login') }}">Book Now</a>
+    </nav>
+</header>
+
+<div class="page-header">
+    <h1>Our Fleet</h1>
+    <p>Choose your perfect ride from our premium collection</p>
+</div>
+
+<div class="vehicle-grid">
+
+    <div class="vehicle-card">
+        <div class="vehicle-image">
+            <img src="{{ url_for('static', filename='cars/Amaze.webp') }}" alt="Honda Amaze">
+            <span class="badge">Available</span>
+        </div>
+        <div class="vehicle-content">
+            <p class="category">SEDAN</p>
+            <h3>Honda Amaze</h3>
+            <p class="vehicle-desc">Reliable sedan with great mileage and comfort.</p>
+            <p class="price">₹1,800 <span>/ day</span></p>
+            <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+        </div>
+    </div>
+
+    <div class="vehicle-card">
+        <div class="vehicle-image">
+            <img src="{{ url_for('static', filename='cars/OIP (1).webp') }}" alt="Hyundai i20">
+            <span class="badge">Available</span>
+        </div>
+        <div class="vehicle-content">
+            <p class="category">HATCHBACK</p>
+            <h3>Hyundai i20</h3>
+            <p class="vehicle-desc">Stylish premium hatchback with modern features.</p>
+            <p class="price">₹2,000 <span>/ day</span></p>
+            <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+        </div>
+    </div>
+
+    <div class="vehicle-card">
+        <div class="vehicle-image">
+            <img src="{{ url_for('static', filename='cars/download.webp') }}" alt="Grand Vitara">
+            <span class="badge">Available</span>
+        </div>
+        <div class="vehicle-content">
+            <p class="category">SUV</p>
+            <h3>Grand Vitara</h3>
+            <p class="vehicle-desc">Spacious SUV offering performance and comfort.</p>
+            <p class="price">₹2,500 <span>/ day</span></p>
+            <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+        </div>
+    </div>
+
+    <div class="vehicle-card">
+        <div class="vehicle-image">
+            <img src="{{ url_for('static', filename='cars/nano.webp') }}" alt="Tata Nano">
+            <span class="badge">Available</span>
+        </div>
+        <div class="vehicle-content">
+            <p class="category">CITY CAR</p>
+            <h3>Tata Nano</h3>
+            <p class="vehicle-desc">Compact and affordable city ride.</p>
+            <p class="price">₹1,200 <span>/ day</span></p>
+            <a href="{{ url_for('login') }}" class="rent-btn">Rent Now</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

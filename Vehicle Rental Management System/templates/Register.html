@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VRMS Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+        body { background:#0b0f19; color:white; }
+        
+        /* NAVBAR */
+        header { 
+            display:flex; align-items:center; justify-content:space-between; 
+            padding:25px 80px; background:rgba(0,0,0,0.9); 
+            position:fixed; width:100%; top:0; z-index:1000; 
+        }
+        .logo { font-size:26px; font-weight:700; color:#ccc; }
+        .nav-right { display:flex; align-items:center; gap:40px; }
+        nav { display:flex; gap:35px; }
+        nav a { text-decoration:none; color:#ccc; font-size:18px; transition:0.3s; }
+        nav a:hover { color:#f4b400; }
+        
+        .login-btn a { 
+            padding:8px 22px; border:1px solid #555; border-radius:8px; 
+            color:white; text-decoration:none; transition:0.3s; 
+        }
+        .login-btn a:hover { border-color:#f4b400; color:#f4b400; }
+
+        /* REGISTER SECTION */
+        .login-section { 
+            min-height:100vh; display:flex; flex-direction:column; 
+            justify-content:center; align-items:center; padding-top:140px; 
+        }
+        .top-text { text-align:center; margin-bottom:40px; }
+        .top-text h1 { font-size:64px; font-weight:800; margin-bottom:10px; }
+        .top-text p { font-size:18px; color:#9ca3af; }
+        
+        .form-box { 
+            width:420px; background:#111827; padding:40px; 
+            border-radius:14px; box-shadow:0 15px 40px rgba(0,0,0,0.6); 
+            border:1px solid rgba(255,255,255,0.08); 
+        }
+        .input-group { margin-bottom:20px; }
+        .input-group label { display:block; margin-bottom:8px; font-size:16px; font-weight:600; color: #f4b400; }
+        .input-group input { 
+            width:100%; padding:14px; border-radius:10px; 
+            border:1px solid #1f2937; background:#0b0f19; 
+            color:white; font-size:16px; 
+        }
+        .input-group input:focus { outline:none; border-color:#f4b400; }
+        
+        button { 
+            width:100%; padding:16px; border:none; background:#f4b400; 
+            color:black; font-size:18px; font-weight:600; 
+            border-radius:10px; cursor:pointer; transition:0.3s; 
+        }
+        button:hover { background:#e0a800; }
+        
+        .bottom { margin-top:25px; text-align:center; font-size:16px; color:#9ca3af; }
+        .bottom a { color:#f4b400; text-decoration:none; font-weight:600; }
+        
+        /* Flash message style */
+        .msg {
+            padding: 10px; border-radius: 8px; margin-bottom: 20px;
+            text-align: center; font-size: 14px;
+            background: rgba(255, 77, 77, 0.1); color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🚗 VRMS</div>
+        <div class="nav-right">
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('vehicles') }}">Vehicles</a>
+                <a href="{{ url_for('login') }}">Book Now</a>
+            </nav>
+            <div class="login-btn">
+                <a href="{{ url_for('login') }}">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="login-section">
+        <div class="top-text">
+            <h1>Create Account</h1>
+            <p>Sign up to start booking vehicles</p>
+        </div>
+
+        <div class="form-box">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="msg">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('register') }}" method="POST">
+                <div class="input-group">
+                    <label>First Name</label>
+                    <input type="text" name="first_name" required placeholder="Enter first name">
+                </div>
+                <div class="input-group">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" required placeholder="Enter last name">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required placeholder="Create a password">
+                </div>
+
+                <button type="submit">Create Account</button>
+            </form>
+
+            <div class="bottom">
+                Already have an account? <a href="{{ url_for('login') }}">Login here</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/auth-check.js') }}"></script>
+</body>
+</html>
